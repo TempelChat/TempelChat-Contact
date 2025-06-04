@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact TempelChat Support</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f9f9fb;
+      padding: 20px;
+    }
+    .form-container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-top: 0;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #357ab8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Contact TempelChat Support</h2>
+    <form action="https://formsubmit.co/info.tempelchat@gmail.com" method="POST">
+      <!-- Redirect after submit -->
+      <input type="hidden" name="_next" value="https://tempelchat.github.io/TempelChat-Contact/thank-you.html">
+      <!-- Disable CAPTCHA -->
+      <input type="hidden" name="_captcha" value="false">
+      <!-- Auto-response message -->
+      <input type="hidden" name="_autoresponse" value="Hi there,
+
+Thanks for contacting TempelChat Support — we’ve received your message!
+
+We’ll get back to you within 24 hours (often sooner).
+
+This is an automatic confirmation. If you need to add anything, just reply to this email.
+
+– The TempelChat Team
+support@tempelchat.com" />
+
+      <label for="name">Your Name</label>
+      <input type="text" name="name" id="name" required>
+
+      <label for="email">Your Email</label>
+      <input type="email" name="email" id="email" required>
+
+      <label for="subject">Subject</label>
+      <input type="text" name="subject" id="subject" required>
+
+      <label for="message">Message</label>
+      <textarea name="message" id="message" rows="5" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+</body>
+</html>
