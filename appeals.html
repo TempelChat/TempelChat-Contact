@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TempelChat Appeals Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #333;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 15px;
+    }
+    textarea {
+      resize: vertical;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      color: #999;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>TempelChat Appeals Form</h2>
+    <form id="appealForm">
+      <label for="username">Your TempelChat Username *</label>
+      <input type="text" id="username" name="username" required />
+
+      <label for="email">Email Address *</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="reason">Why was your account flagged or banned? *</label>
+      <select id="reason" name="reason" required>
+        <option value="">Select a reason</option>
+        <option value="spam">Spam or suspicious activity</option>
+        <option value="harassment">Harassment or hate speech</option>
+        <option value="impersonation">Impersonation or identity violation</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="explanation">Explain why you believe this was a mistake *</label>
+      <textarea id="explanation" name="explanation" rows="6" required></textarea>
+
+      <label for="supporting-evidence">Any supporting evidence (optional)</label>
+      <textarea id="supporting-evidence" name="supportingEvidence" rows="4"></textarea>
+
+      <button type="submit">Submit Appeal</button>
+    </form>
+    <div class="footer">
+      Please allow 3–5 business days for a response. For urgent matters, contact appeals.tempelchat@gmail.com.
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("appealForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Your appeal has been submitted. We’ll review it shortly.");
+      // You can replace the alert with a call to your backend or email service
+    });
+  </script>
+</body>
+</html>
