@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TempelChat Feedback</title>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    section#feedback {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 2em;
+      background: #fff;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #6200ea;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: #5300c9;
+    }
+
+    #feedbackResponse {
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<section id="feedback">
+  <h2>💬 TempelChat Feedback</h2>
+  <form id="feedbackForm">
+    <label for="name">Your Name (optional):</label>
+    <input type="text" id="name" name="name" placeholder="Max Tempelman" />
+
+    <label for="email">Email (optional):</label>
+    <input type="email" id="email" name="email" placeholder="you@example.com" />
+
+    <label for="rating">How satisfied are you with TempelChat?</label>
+    <select id="rating" name="rating">
+      <option value="5">⭐⭐⭐⭐⭐ - Excellent</option>
+      <option value="4">⭐⭐⭐⭐ - Good</option>
+      <option value="3">⭐⭐⭐ - Okay</option>
+      <option value="2">⭐⭐ - Poor</option>
+      <option value="1">⭐ - Terrible</option>
+    </select>
+
+    <label>Feedback Type:</label><br/>
+    <input type="checkbox" name="type" value="Feature Request" /> Feature Request<br/>
+    <input type="checkbox" name="type" value="Bug Report" /> Bug Report<br/>
+    <input type="checkbox" name="type" value="General Feedback" /> General Feedback<br/><br/>
+
+    <label for="message">Your Feedback:</label>
+    <textarea id="message" name="message" rows="6" placeholder="Let us know what you think..." required></textarea>
+
+    <button type="submit">Submit Feedback</button>
+  </form>
+
+  <div id="feedbackResponse" style="display:none;"></div>
+</section>
+
+<script>
+  (function() {
+    emailjs.init("sELo2GWp5r7SQPvsN");
+  })();
+
+  document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const checkboxes = form.querySelectorAll('input[name="type"]:checked');
+    const selectedTypes = Array.from(checkboxes).map(cb => cb.value).join(', ');
+
+    const templateParams = {
+      name: form.name.value,
+      email: form.email.value,
+      rating: form.rating.value,
+      types: selectedTypes,
+      message: form.message.value
+    };
+
+    emailjs.send('service_s912dle', 'template_3wjzbxr', templateParams)
+      .then(function(response) {
+        document.getElementById('feedbackResponse').textContent = '✅ Thank you for your feedback!';
+        document.getElementById('feedbackResponse').style.display = 'block';
+        form.reset();
+      }, function(error) {
+        document.getElementById('feedbackResponse').textContent = '❌ Failed to send. Please try again.';
+        document.getElementById('feedbackResponse').style.display = 'block';
+        console.error('EmailJS Error:', error);
+      });
+  });
+</script>
+
+</body>
+</html>
